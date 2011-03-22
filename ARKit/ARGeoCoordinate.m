@@ -33,7 +33,7 @@
 	if (![self geoLocation]) 
 		return;
 	
-	double baseDistance = [origin getDistanceFrom:[self geoLocation]];
+	double baseDistance = [origin distanceFromLocation:[self geoLocation]];
 	[self setRadialDistance: sqrt(pow([origin altitude] - [[self geoLocation] altitude], 2) + pow(baseDistance, 2))];
 	
 	float angle = sin(ABS([origin altitude] - [[self geoLocation] altitude]) / [self radialDistance]);
@@ -44,7 +44,7 @@
 	[self setInclination: angle];
 	[self setAzimuth: [self angleFromCoordinate:[origin coordinate] toCoordinate:[[self geoLocation] coordinate]]];
 	
-	NSLog(@"distance is %d, angle is %d, azimuth is %d",baseDistance,angle,[self azimuth]);
+	NSLog(@"distance is %f, angle is %f, azimuth is %f",baseDistance,angle,[self azimuth]);
 }
 
 + (ARGeoCoordinate *)coordinateWithLocation:(CLLocation *)location locationTitle:(NSString *) titleOfLocation {

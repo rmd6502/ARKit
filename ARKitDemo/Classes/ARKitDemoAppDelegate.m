@@ -17,6 +17,7 @@
 	if([ARKit deviceSupportsAR]){
 		ARViewController *viewController = [[ARViewController alloc] initWithDelegate:self];
 		[window addSubview:[viewController view]];
+        [viewController release];
 	}
 	else{
 		UIViewController *viewController = [[UIViewController alloc] init];
@@ -27,6 +28,7 @@
 		errorLabel.textAlignment = UITextAlignmentCenter;
 		[viewController.view addSubview:errorLabel];
 		[window addSubview:[viewController view]];
+        [viewController release];
 	}
 	
     [window makeKeyAndVisible];
@@ -40,7 +42,7 @@
 
 -(NSMutableArray *)getLocations {
 	
-	NSMutableArray *locationArray;
+	NSMutableArray *locationArray = [[[NSMutableArray alloc] init] autorelease];
 	ARGeoCoordinate *tempCoordinate;
 	CLLocation		*tempLocation;
 	

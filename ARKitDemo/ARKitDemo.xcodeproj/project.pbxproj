@@ -267,13 +267,9 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ARKitDemo_Prefix.pch;
-				HEADER_SEARCH_PATHS = ../iPhoneAugmentedRealityLib;
+				HEADER_SEARCH_PATHS = ../ARKit;
 				INFOPLIST_FILE = "ARKitDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/../iPhoneAugmentedRealityLib/build/Debug-iphoneos\\\"",
-				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ARKitDemo;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -287,13 +283,9 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ARKitDemo_Prefix.pch;
-				HEADER_SEARCH_PATHS = ../iPhoneAugmentedRealityLib;
+				HEADER_SEARCH_PATHS = ../ARKit;
 				INFOPLIST_FILE = "ARKitDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/../iPhoneAugmentedRealityLib/build/Debug-iphoneos\\\"",
-				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ARKitDemo;
 			};
@@ -302,7 +294,7 @@
 		696B955F1116ADDB007D7A0F /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -322,13 +314,9 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ARKitDemo_Prefix.pch;
-				HEADER_SEARCH_PATHS = ../iPhoneAugmentedRealityLib;
+				HEADER_SEARCH_PATHS = ../ARKit;
 				INFOPLIST_FILE = "ARKitDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/../iPhoneAugmentedRealityLib/build/Debug-iphoneos\\\"",
-				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ARKitDemo;
 			};
@@ -337,7 +325,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -352,7 +340,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
