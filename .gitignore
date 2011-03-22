@@ -1,28 +1,19 @@
-build/
-Payload/
-.DS_Store
+# the build
+Build
+DerivedData
+
+# temp nibs and swap files
 *~.nib
+*.swp
+
+# OS X folder attributes
+.DS_Store
+
+# user-specific XCode stuff
 *.mode1v3
 *.mode2v3
 *.pbxuser
-*.perspective
 *.perspectivev3
-*.[oa]
-*.ipa
+*.xcworkspace
+xcuserdata
 
-.svn/
-*.pyc
-*.pyo
-.DS_Store
-*.db
-*.swp
-*.lock
-*~
-*.tmp
-*.bak
-access.log
-error.log
-*.pid
-.pid
-.fseventsd
-.Trashes
