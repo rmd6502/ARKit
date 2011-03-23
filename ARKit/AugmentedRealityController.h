@@ -13,59 +13,41 @@
 @class ARCoordinate;
 
 @interface AugmentedRealityController : NSObject <UIAccelerometerDelegate, CLLocationManagerDelegate> {
-
-	BOOL scaleViewsBasedOnDistance;
-	BOOL rotateViewsBasedOnPerspective;
-	
-	double maximumScaleDistance;
-	double minimumScaleFactor;
-	double maximumRotationAngle;
-	
-	ARCoordinate		*centerCoordinate;
-	CLLocationManager	*locationManager;
-	UIDeviceOrientation currentOrientation;
-	
-	UIViewController	*rootViewController;
-	UIAccelerometer		*accelerometerManager;
-	CLLocation			*centerLocation;
-	UIView				*displayView;
-	UILabel				*debugView;
-	UIImagePickerController		*cameraController;
-
 @private
-	double				latestHeading;
-	double				degreeRange;
-	float				viewAngle;
-	BOOL				debugMode;
-	
 	NSMutableArray		*coordinates;
-	NSMutableArray		*coordinateViews;
 }
 
-@property BOOL scaleViewsBasedOnDistance;
-@property BOOL rotateViewsBasedOnPerspective;
-@property BOOL debugMode;
+@property (nonatomic, assign) BOOL scaleViewsBasedOnDistance;
+@property (nonatomic, assign) BOOL rotateViewsBasedOnPerspective;
 
-@property double maximumScaleDistance;
-@property double minimumScaleFactor;
-@property double maximumRotationAngle;
-@property double degreeRange;
+@property (nonatomic, assign) double maximumScaleDistance;
+@property (nonatomic, assign) double minimumScaleFactor;
+@property (nonatomic, assign) double maximumRotationAngle;
+@property (nonatomic, assign) double degreeRange;
+@property (nonatomic, assign) double latestHeading;
+@property (nonatomic, assign) float  viewAngle;
 
-@property (nonatomic, retain) UIAccelerometer	*accelerometerManager;
-@property (nonatomic, retain) CLLocationManager	*locationManager;
-@property (nonatomic, retain) ARCoordinate		*centerCoordinate;
-@property (nonatomic, retain) CLLocation		*centerLocation;
-@property (nonatomic, retain) UIView			*displayView;
-@property (nonatomic, retain) UIViewController	*rootViewController;
+@property (readonly)          NSArray        *coordinates;
+@property (nonatomic, retain) NSMutableArray *coordinateViews;
+
+@property (nonatomic, retain) UIAccelerometer         *accelerometerManager;
+@property (nonatomic, retain) CLLocationManager       *locationManager;
+@property (nonatomic, retain) ARCoordinate            *centerCoordinate;
+@property (nonatomic, retain) CLLocation              *centerLocation;
+@property (nonatomic, retain) UIView                  *displayView;
+@property (nonatomic, retain) UIViewController        *rootViewController;
 @property (nonatomic, retain) UIImagePickerController *cameraController;
-@property UIDeviceOrientation	currentOrientation;
-@property (readonly) NSArray *coordinates;
+@property (nonatomic, assign) UIDeviceOrientation	  currentOrientation;
+
+@property (nonatomic, assign) BOOL    debugMode;
+@property (nonatomic, retain) UILabel *debugView;
+
 
 - (id)initWithViewController:(UIViewController *)theView;
+- (void)displayAR;
+- (void)updateLocations;
 
-- (void) setupDebugPostion;
-- (void) updateLocations;
-- (void) displayAR;
+- (void)setupDebugPostion;
 
 // Adding coordinates to the underlying data model.
 - (void)addCoordinate:(ARCoordinate *)coordinate augmentedView:(UIView *)agView animated:(BOOL)animated ;
@@ -74,10 +56,5 @@
 - (void)removeCoordinate:(ARCoordinate *)coordinate;
 - (void)removeCoordinate:(ARCoordinate *)coordinate animated:(BOOL)animated;
 - (void)removeCoordinates:(NSArray *)coordinateArray;
-
-@property (retain) UILabel				*debugView;
-@property double				latestHeading;
-@property float				viewAngle;
-@property (retain) NSMutableArray		*coordinateViews;
 
 @end
