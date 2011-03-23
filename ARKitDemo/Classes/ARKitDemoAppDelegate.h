@@ -10,7 +10,7 @@
 #import "ARKit.h"
 
 
-@interface ARKitDemoAppDelegate : NSObject <UIApplicationDelegate, ARLocationDelegate> {
+@interface ARKitDemoAppDelegate : NSObject <UIApplicationDelegate, ARLocationDataSource> {
     UIWindow *window;
 }
 

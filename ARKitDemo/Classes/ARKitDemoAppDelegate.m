@@ -7,6 +7,7 @@
 //
 
 #import "ARKitDemoAppDelegate.h"
+#import "CoordinateView.h"
 
 @implementation ARKitDemoAppDelegate
 
@@ -15,7 +16,7 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 	
 	if([ARKit deviceSupportsAR]){
-		ARViewController *viewController = [[ARViewController alloc] initWithDelegate:self];
+		ARViewController *viewController = [[ARViewController alloc] initWithDataSource:self];
 		[window addSubview:[viewController view]];
         [viewController release];
 	}
@@ -40,7 +41,7 @@
 }
 
 
--(NSMutableArray *)getLocations {
+-(NSMutableArray *)locations {
 	
 	NSMutableArray *locationArray = [[[NSMutableArray alloc] init] autorelease];
 	ARGeoCoordinate *tempCoordinate;
@@ -168,6 +169,10 @@
 	return locationArray;
 }
 
+- (UIView *)viewForCoordinate:(id)coordinate {
+    CoordinateView *cv = [[[CoordinateView alloc] initForCoordinate:coordinate] autorelease];
+    return cv;
+}
 
 
 @end

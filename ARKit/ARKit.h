@@ -9,7 +9,13 @@
 #import <Foundation/Foundation.h>
 
 #import "ARViewController.h"
-#import "ARLocationDelegate.h"
+#import "ARGeoCoordinate.h"
+
+@protocol ARLocationDataSource
+- (NSMutableArray *)locations; //returns an array of ARGeoCoordinates 
+- (UIView *)viewForCoordinate:(ARCoordinate *)coordinate; 
+@end
+
 
 @interface ARKit : NSObject {
 

@@ -7,20 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ARLocationDelegate.h"
-
+#import "ARKit.h"
 
 @class AugmentedRealityController;
+@protocol ARLocationDataSource;
 
 @interface ARViewController : UIViewController {
 	AugmentedRealityController	*agController;
-	id<ARLocationDelegate> delegate;
+	id<ARLocationDataSource> dataSource;
 }
 
 @property (nonatomic, retain) AugmentedRealityController *agController;
-@property (nonatomic, assign) id<ARLocationDelegate> delegate;
+@property (nonatomic, assign) id<ARLocationDataSource> dataSource;
 
--(id)initWithDelegate:(id<ARLocationDelegate>) aDelegate;
+-(id)initWithDataSource:(id<ARLocationDataSource>) aDataSource;
 
 @end
 

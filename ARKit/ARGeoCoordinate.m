@@ -8,25 +8,35 @@
 
 #import "ARGeoCoordinate.h"
 
+@interface ARGeoCoordinate (Private)
+- (float)angleFromCoordinate:(CLLocationCoordinate2D)first toCoordinate:(CLLocationCoordinate2D)second;
+@end
+
 @implementation ARGeoCoordinate
 
-@synthesize geoLocation;
+#pragma mark - 
+#pragma mark Class methods 
 
-- (float)angleFromCoordinate:(CLLocationCoordinate2D)first toCoordinate:(CLLocationCoordinate2D)second {
++ (ARGeoCoordinate *)coordinateWithLocation:(CLLocation *)location locationTitle:(NSString *) titleOfLocation {
+    
+	ARGeoCoordinate *newCoordinate	= [[ARGeoCoordinate alloc] init];
+	[newCoordinate setGeoLocation: location];
+	[newCoordinate setTitle: titleOfLocation];
 	
-	float longitudinalDifference	= second.longitude - first.longitude;
-	float latitudinalDifference		= second.latitude  - first.latitude;
-	float possibleAzimuth			= (M_PI * .5f) - atan(latitudinalDifference / longitudinalDifference);
-	
-	if (longitudinalDifference > 0) 
-		return possibleAzimuth;
-	else if (longitudinalDifference < 0) 
-		return possibleAzimuth + M_PI;
-	else if (latitudinalDifference < 0) 
-		return M_PI;
-	
-	return 0.0f;
+	return [newCoordinate autorelease];
 }
+
++ (ARGeoCoordinate *)coordinateWithLocation:(CLLocation *)location fromOrigin:(CLLocation *)origin {
+	
+	ARGeoCoordinate *newCoordinate = [ARGeoCoordinate coordinateWithLocation:location locationTitle:@""];
+	[newCoordinate calibrateUsingOrigin:origin];
+	return newCoordinate;
+}
+
+#pragma mark - 
+#pragma mark Instance methods 
+
+@synthesize geoLocation;
 
 - (void)calibrateUsingOrigin:(CLLocation *)origin {
 	
@@ -47,20 +57,23 @@
 	NSLog(@"distance is %f, angle is %f, azimuth is %f",baseDistance,angle,[self azimuth]);
 }
 
-+ (ARGeoCoordinate *)coordinateWithLocation:(CLLocation *)location locationTitle:(NSString *) titleOfLocation {
+#pragma mark -
+#pragma mark Private 
 
-	ARGeoCoordinate *newCoordinate	= [[ARGeoCoordinate alloc] init];
-	[newCoordinate setGeoLocation: location];
-	[newCoordinate setTitle: titleOfLocation];
+- (float)angleFromCoordinate:(CLLocationCoordinate2D)first toCoordinate:(CLLocationCoordinate2D)second {
 	
-	return [newCoordinate autorelease];
-}
-
-+ (ARGeoCoordinate *)coordinateWithLocation:(CLLocation *)location fromOrigin:(CLLocation *)origin {
+	float longitudinalDifference	= second.longitude - first.longitude;
+	float latitudinalDifference		= second.latitude  - first.latitude;
+	float possibleAzimuth			= (M_PI * .5f) - atan(latitudinalDifference / longitudinalDifference);
 	
-	ARGeoCoordinate *newCoordinate = [ARGeoCoordinate coordinateWithLocation:location locationTitle:@""];
-	[newCoordinate calibrateUsingOrigin:origin];
-	return newCoordinate;
+	if (longitudinalDifference > 0) 
+		return possibleAzimuth;
+	else if (longitudinalDifference < 0) 
+		return possibleAzimuth + M_PI;
+	else if (latitudinalDifference < 0) 
+		return M_PI;
+	
+	return 0.0f;
 }
 
 @end

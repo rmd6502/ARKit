@@ -15,9 +15,7 @@
 @class ARCoordinate;
 
 @protocol ARPersistentItem
-
 @property (nonatomic, readonly) ARCoordinate *arCoordinate;
-
 @optional
 // Title and subtitle for use by selection UI.
 - (NSString *)title;
@@ -25,10 +23,8 @@
 @end
 
 @protocol ARGeoPersistentItem
-
 // Center latitude and longitude of the annotion view.
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-
 @optional
 // Title and subtitle for use by selection UI.
 - (NSString *)title;

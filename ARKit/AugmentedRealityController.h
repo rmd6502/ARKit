@@ -79,4 +79,5 @@
 @property double				latestHeading;
 @property float				viewAngle;
 @property (retain) NSMutableArray		*coordinateViews;
+
 @end
