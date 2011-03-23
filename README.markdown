@@ -4,7 +4,7 @@ Augmented Reality Kit for iOS
 Overview 
 -------- 
 
-Forked from work by Mark Tigas ([iphone-arkit][mtigas_arkit]), 
+Forked from work by Mike Tigas ([iphone-arkit][mtigas_arkit]), 
 Neils Hansen ([iPhone-AR-Toolkit][nielswh_arkit])
 and Zac White ([iphonearkit][zac_arkit]).
 
