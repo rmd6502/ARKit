@@ -53,7 +53,7 @@
 	
 	CGRect screenRect = [[UIScreen mainScreen] bounds];
 	
-	self.displayView = [[UIView alloc] initWithFrame: screenRect]; 
+	displayView = [[UIView alloc] initWithFrame: screenRect]; 
 	self.currentOrientation = UIDeviceOrientationPortrait; 
 	self.degreeRange = self.displayView.bounds.size.width / 12; 
 
@@ -86,6 +86,8 @@
 	self.debugView = nil;
 
 	[coordinates release];
+    self.displayView = nil;
+    self.locationManager = nil;
     [super dealloc];
 }
 
@@ -99,7 +101,7 @@
 	
 	// start our heading readings and our accelerometer readings.
 	if (!self.locationManager) {
-		self.locationManager = [[CLLocationManager alloc] init];
+		locationManager = [[CLLocationManager alloc] init];
 		self.locationManager.headingFilter = kCLHeadingFilterNone;
 		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 		[self.locationManager startUpdatingHeading];

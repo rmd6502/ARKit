@@ -23,7 +23,7 @@
 }
 
 - (void)loadView {
-	self.agController = [[AugmentedRealityController alloc] initWithViewController:self];
+	agController = [[AugmentedRealityController alloc] initWithViewController:self];
 	
 	self.agController.debugMode = NO;
 	self.agController.scaleViewsBasedOnDistance = YES;
@@ -36,6 +36,10 @@
 			[agController addCoordinate:coordinate augmentedView:coordinateView animated:NO];
 		}
 	}
+}
+
+- (void)viewDidUnload {
+    self.agController = nil;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
